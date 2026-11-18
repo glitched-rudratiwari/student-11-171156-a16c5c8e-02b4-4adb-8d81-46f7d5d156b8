@@ -1,0 +1,6 @@
+$kind: collection
+description: |-
+  ## Register
+
+  Endpoint for creating a new user account. Provide a unique `username` and a `password` in the request body. On success, the API returns the new user's `id`, `username`, and a signed **JWT token** valid for 1 hour.
+order: 1000

@@ -1,0 +1,47 @@
+$kind: collection
+description: |-
+  # UserAPI Documentation
+
+  The **UserAPI** is a RESTful API for managing user accounts. It provides endpoints to register new users, authenticate existing users, and perform CRUD operations on user records.
+
+  ## Base URL
+
+  All endpoints are relative to `{{baseUrl}}`.
+
+  ## Authentication
+
+  All endpoints (except internal test helpers) require an **API Key** passed in the request header:
+
+  | Header | Value |
+  |--------|-------|
+  | `X-API-Key` | Your API key |
+
+  If the API key is missing or invalid, the server returns `401 Unauthorized`.
+
+  ## Endpoints Overview
+
+  | Method | Path | Description |
+  |--------|------|-------------|
+  | `POST` | `/v1/users/register` | Register a new user |
+  | `POST` | `/v1/users/login` | Log in an existing user |
+  | `GET` | `/v1/users/:id` | Retrieve a user by ID |
+  | `PUT` | `/v1/users/:id` | Update a user's details |
+  | `DELETE` | `/v1/users/:id` | Delete a user by ID |
+
+  ## Response Format
+
+  All responses are returned as JSON. Successful operations return the relevant resource or a confirmation message. Errors return a JSON object with a `message` field describing the issue.
+
+  ## JWT Tokens
+
+  Upon successful registration or login, the API returns a **JWT token** valid for **1 hour**. Store this token securely and use it for any downstream authenticated operations.
+variables:
+  baseUrl: /
+auth:
+  - id: 3c997237-5027-4615-8fb3-1648582bdfd4
+    type: apikey
+    name: apikey auth
+    credentials:
+      key: X-API-Key
+      value: "{{apiKey}}"
+      in: header

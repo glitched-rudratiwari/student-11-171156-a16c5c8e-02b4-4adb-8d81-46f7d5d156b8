@@ -1,0 +1,6 @@
+$kind: collection
+description: |-
+  ## Version 1 (v1)
+
+  This folder contains all **v1** endpoints of the UserAPI. All routes are prefixed with `/v1/users` and require a valid `X-API-Key` header for authentication.
+order: 1000
