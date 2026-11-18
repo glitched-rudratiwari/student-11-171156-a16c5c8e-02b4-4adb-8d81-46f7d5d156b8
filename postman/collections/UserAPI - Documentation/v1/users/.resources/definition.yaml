@@ -1,0 +1,8 @@
+$kind: collection
+description: |-
+  ## Users
+
+  Endpoints for managing user accounts. This group covers the full lifecycle of a user — from registration and authentication to retrieval, update, and deletion.
+
+  All requests must include the `X-API-Key` header. Responses are JSON-formatted.
+order: 1000

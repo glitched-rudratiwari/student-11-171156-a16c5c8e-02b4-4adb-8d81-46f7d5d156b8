@@ -10,9 +10,19 @@ workflows:
       options:
         syncExamples: false
         deleteOrphanedRequests: false
+    - spec: ../contract/index.yaml
+      collection: ../postman/collections/UserAPI - Documentation
+      options:
+        syncExamples: false
+        deleteOrphanedRequests: false
   syncCollectionToSpec:
     - spec: ../contract/index.yaml
       collection: ../postman/collections/UserAPI - Integration Test Suite
+      options:
+        syncExamples: false
+        deleteOrphanedRequests: false
+    - spec: ../contract/index.yaml
+      collection: ../postman/collections/UserAPI - Documentation
       options:
         syncExamples: false
         deleteOrphanedRequests: false

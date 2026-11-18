@@ -1,0 +1,6 @@
+$kind: collection
+description: |-
+  ## Login
+
+  Endpoint for authenticating an existing user. Submit the user's `username` and `password`. If the credentials are valid, the API returns the user's `id`, `username`, and a fresh **JWT token** valid for 1 hour. Returns `401 Unauthorized` if the credentials are incorrect or the API key is missing.
+order: 2000

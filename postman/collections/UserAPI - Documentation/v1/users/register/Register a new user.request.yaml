@@ -1,0 +1,56 @@
+$kind: http-request
+description: |-
+  Creates a new user account in the system.
+
+  **Authentication:** Requires a valid `X-API-Key` header.
+
+  **Request body:**
+
+  | Field | Type | Required | Description |
+  |-------|------|----------|-------------|
+  | `username` | string | ✅ | A unique username for the new account |
+  | `password` | string | ✅ | The user's password (stored as a bcrypt hash) |
+
+  **Success response (201 Created):**
+
+  ```json
+  {
+    "id": 123,
+    "username": "johndoe",
+    "token": "<JWT token valid for 1 hour>"
+  }
+  ```
+
+  **Error responses:**
+
+  | Status | Description |
+  |--------|-------------|
+  | `401 Unauthorized` | Missing or invalid API key |
+  | `500 Internal Server Error` | Unexpected server error (e.g. duplicate username) |
+url: "{{baseUrl}}/v1/users/register"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "username": "string",
+      "password": "string"
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    }
+settings: {}
+examples: ./.resources/Register a new user.resources/examples
+order: 1000

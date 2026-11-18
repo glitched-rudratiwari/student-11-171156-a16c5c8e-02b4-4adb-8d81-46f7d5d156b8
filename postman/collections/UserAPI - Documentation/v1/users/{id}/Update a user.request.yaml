@@ -1,0 +1,77 @@
+$kind: http-request
+description: |-
+  Updates the `username` and `password` of an existing user.
+
+  **Authentication:** Requires a valid `X-API-Key` header.
+
+  **Path parameter:**
+
+  | Parameter | Type | Required | Description |
+  |-----------|------|----------|-------------|
+  | `id` | integer | ✅ | The unique numeric ID of the user to update |
+
+  **Request body:**
+
+  | Field | Type | Required | Description |
+  |-------|------|----------|-------------|
+  | `username` | string | ✅ | The new username for the account |
+  | `password` | string | ✅ | The new password (will be re-hashed with bcrypt) |
+
+  **Success response (200 OK):**
+
+  ```json
+  {
+    "message": "User updated successfully"
+  }
+  ```
+
+  **Error responses:**
+
+  | Status | Description |
+  |--------|-------------|
+  | `401 Unauthorized` | Missing or invalid API key |
+  | `500 Internal Server Error` | Unexpected server error |
+url: '{{baseUrl}}/v1/users/:id'
+method: PUT
+headers:
+  Content-Type: application/json
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "5950"
+    disabled: false
+    description: 'The unique numeric ID of the user to update. Example: 5950'
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      }
+body:
+  type: json
+  content: |-
+    {
+      "username": "string",
+      "password": "string"
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    }
+settings: {}
+examples: ./.resources/Update a user.resources/examples
+order: 2000

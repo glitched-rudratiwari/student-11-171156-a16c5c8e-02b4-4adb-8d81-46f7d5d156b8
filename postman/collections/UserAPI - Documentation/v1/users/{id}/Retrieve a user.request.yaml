@@ -1,0 +1,55 @@
+$kind: http-request
+description: |-
+  Retrieves the details of a single user by their numeric ID.
+
+  **Authentication:** Requires a valid `X-API-Key` header.
+
+  **Path parameter:**
+
+  | Parameter | Type | Required | Description |
+  |-----------|------|----------|-------------|
+  | `id` | integer | ✅ | The unique numeric ID of the user to retrieve |
+
+  **Success response (200 OK):**
+
+  ```json
+  {
+    "id": 123,
+    "username": "johndoe"
+  }
+  ```
+
+  **Error responses:**
+
+  | Status | Description |
+  |--------|-------------|
+  | `401 Unauthorized` | Missing or invalid API key |
+  | `404 Not Found` | No user exists with the given ID |
+  | `500 Internal Server Error` | Unexpected server error |
+url: '{{baseUrl}}/v1/users/:id'
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "5950"
+    disabled: false
+    description: 'The unique numeric ID of the user to retrieve. Example: 5950'
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      }
+body:
+  type: text
+  content: ""
+settings: {}
+examples: ./.resources/Retrieve a user.resources/examples
+order: 1000

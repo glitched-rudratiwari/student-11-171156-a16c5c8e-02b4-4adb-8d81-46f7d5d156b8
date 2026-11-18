@@ -1,0 +1,14 @@
+$kind: collection
+description: |-
+  ## User by ID
+
+  Endpoints for operating on a specific user identified by their numeric `id` path parameter. Supports retrieving, updating, and deleting a user record.
+
+  **Path parameter:**
+
+  | Parameter | Type | Description |
+  |-----------|------|-------------|
+  | `id` | integer | The unique numeric ID of the user |
+
+  Returns `404 Not Found` if no user with the given ID exists.
+order: 3000
